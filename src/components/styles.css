@@ -125,13 +125,13 @@ footer {
 }
 
 @media screen and (max-width: 800px) {
-    .temp {
+    .wrapper {
         flex-direction: column-reverse;
         margin-left: 0;
         width: 90%;
         margin-left: 5%;
     }
-    .wrap {
+    .innerwrap {
         width: 100%;
         justify-content: center;
         padding: 0
