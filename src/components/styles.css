@@ -195,14 +195,6 @@ footer {
     }
   }
   
-  img {
-    cursor: pointer;
-  }
-  
-  img:hover {
-    opacity: 0.8;
-  }
-  
   .header-mobile {
     position: absolute;
     top: 0;
@@ -226,10 +218,6 @@ footer {
   
   .header-mobile.hidden {
     height: 50px;
-  }
-  
-  .header-mobile img {
-    max-height: 50px;
   }
   
   .header-mobile > div {
