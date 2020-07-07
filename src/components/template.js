@@ -7,8 +7,8 @@ const Template = ( {name, map, information} ) => {
 
     if (name.length > 0 ) {
       return (
-        <div className="temp">
-        <div className="wrap">
+        <div className="wrapper">
+        <div className="innerwrap">
         <ModalImage
         className="photo" 
         small={map}
@@ -23,7 +23,7 @@ const Template = ( {name, map, information} ) => {
     }
 
     return (
-        <div className="empty"></div>
+        <div></div>
     )
 }
 
