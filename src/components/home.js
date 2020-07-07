@@ -61,7 +61,7 @@ function Home() {
   const [information, setInformation] = useState("")
   const [items, setItems] = useState(list)
 
-  const handleFilterChange = (event) => {
+  const handleFilterAdd = (event) => {
     setFilter(event.target.value)
   }
 
@@ -85,7 +85,7 @@ function Home() {
       <div className="App">
         <Navbar/>
         <h1>Kiertokapulan lajitteluhaku</h1>
-        <input value={filter} onChange={handleFilterChange}/>
+        <input value={filter} onChange={handleFilterAdd}/>
         <Template name={name} map={map} information={information} />
         <Footer/>
       </div>
@@ -96,7 +96,7 @@ function Home() {
     <div className="App">
       <Navbar/>
       <h1>Kiertokapulan lajitteluhaku</h1>
-      <input value={filter} onChange={handleFilterChange}/>
+      <input value={filter} onChange={handleFilterAdd}/>
       <div className="full">
       <ul>{renderList}</ul>
       <Template name={name} map={map} information={information} />

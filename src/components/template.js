@@ -2,6 +2,8 @@ import React from 'react'
 import './styles.css'
 import ModalImage from "react-modal-image";
 
+
+
 const Template = ( {name, map, information} ) => {
 
 

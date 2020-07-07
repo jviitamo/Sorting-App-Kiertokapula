@@ -25,7 +25,6 @@ import React, { PureComponent } from 'react'
     render() {
       const { open, width } = this.state
   
-      // Different navigation for mobile
       if (width < 515) {
         return (
           <div className={`header-mobile ${open ? 'visible' : 'hidden'}`}>
