@@ -80,7 +80,7 @@ function Home() {
   const filteredItems = items.filter(item => item.name.toUpperCase().indexOf(filter.toUpperCase()) >= 0)
   const renderList = filteredItems.map(item => <li className="link" style={item.underline ? {textDecorationLine: "underline"} : {}} onClick={() => handleResultChange(item)}>{item.name}</li>)
 
-  if (items.length === filteredItems.length | filteredItems.length === 0) {
+  if (items.length === filteredItems.length) {
     return (
       <div className="App">
         <Navbar/>
@@ -90,6 +90,19 @@ function Home() {
         <Footer/>
       </div>
     );
+  }
+
+  if ( filteredItems.length === 0) {
+    return (
+      <div className="App">
+        <Navbar/>
+        <h1>Kiertokapulan lajitteluhaku</h1>
+        <input value={filter} onChange={handleFilterAdd}/>
+        <p>Ei hakutuloksia</p>
+        <Template name={name} map={map} information={information} />
+        <Footer/>
+      </div>
+    )
   }
 
   return (
