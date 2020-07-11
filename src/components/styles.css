@@ -89,6 +89,10 @@ img {
     color: #005580
 }
 
+.empty {
+    height: 200px
+}
+
 .link {
     text-decoration: none;
     font-size: 20px;

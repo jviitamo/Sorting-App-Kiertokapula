@@ -25,7 +25,7 @@ const Template = ( {name, map, information} ) => {
     }
 
     return (
-        <div></div>
+        <div className="empty"></div>
     )
 }
 
