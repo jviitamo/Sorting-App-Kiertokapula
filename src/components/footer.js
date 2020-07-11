@@ -5,8 +5,8 @@ function Footer () {
   return (
     <footer>
       <a href="https://www.kiertokapula.fi/yhteystiedot/anna-palautetta/" target="a_blank">Anna palautetta</a>
-      <a href="https://www.kiertokapula.fi/palvelut/jatteiden-vastaanotto/hinnasto/" target="a_blank">hinnoittelu</a>
-      <a href="https://www.kiertokapula.fi/yhteystiedot/" target="a_blank">yhteystiedot</a>
+      <a href="https://www.kiertokapula.fi/palvelut/jatteiden-vastaanotto/hinnasto/" target="a_blank">Hinnoittelu</a>
+      <a href="https://www.kiertokapula.fi/yhteystiedot/" target="a_blank">Yhteystiedot</a>
     </footer>
     )
 }
