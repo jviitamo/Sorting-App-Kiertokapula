@@ -10,22 +10,22 @@ import Navbar from './Navbar'
 
 const list = [
   {
-  name: 'sekajäte',
-  underline: false,
-  map: seka,
-  information: "Sekajätettä kerätään kiinteistöiltä, joilla biojätettä ei tarvitse määräysten mukaan lajitella erikseen ja joilla sitä ei kompostoida. Tähän luokkaan kuuluvat kaikki muihin osiin kelpaamaton jäte. Esimerkiksi SER-romu, vaaralliset jätteet tai rakennusjätteet eivät kuulu tähän kategoriaan."
+    name: 'sekajäte',
+    underline: false,
+    map: seka,
+    information: "Sekajätettä kerätään kiinteistöiltä, joilla biojätettä ei tarvitse määräysten mukaan lajitella erikseen ja joilla sitä ei kompostoida. Tähän luokkaan kuuluvat kaikki muihin osiin kelpaamaton jäte. Esimerkiksi SER-romu, vaaralliset jätteet tai rakennusjätteet eivät kuulu tähän kategoriaan."
   },
   {
-  name: 'puu',
-  underline: false,
-  map: puu,
-  information: "Puu jaetaan kahteen osaan, puhtaaseen puuhun ja purkupuuhun. Puhdas puu saa sisältää vähäisiä määriä nauloja, ruuveja ja saranoita. Myös lahonnut puu kelpaa.Toisaalta purkupuu taas saa sisältää nauloja, ruuveja ja saranoita sekä muita mekaanisia epäpuhtauksia sekä puussa kiinni olevan tapetin. Myös lahonnut purkupuu kelpaa."
+    name: 'puu',
+    underline: false,
+    map: puu,
+    information: "Puu jaetaan kahteen osaan, puhtaaseen puuhun ja purkupuuhun. Puhdas puu saa sisältää vähäisiä määriä nauloja, ruuveja ja saranoita. Myös lahonnut puu kelpaa.Toisaalta purkupuu taas saa sisältää nauloja, ruuveja ja saranoita sekä muita mekaanisia epäpuhtauksia sekä puussa kiinni olevan tapetin. Myös lahonnut purkupuu kelpaa."
   },
   {
-  name: 'metalli',
-  underline: false,
-  map: metalli,
-  information: "metalli voidaan toimittaa alueelle ilmaiseksi. Metalliin kuuluvat muun muassa, polkupyörät, kaasugrillit, kattopelti, kiukaat, tyhjät ja avatut tynnyrit sekä sammuttimet "
+    name: 'metalli',
+    underline: false,
+    map: metalli,
+    information: "metalli voidaan toimittaa alueelle ilmaiseksi. Metalliin kuuluvat muun muassa, polkupyörät, kaasugrillit, kattopelti, kiukaat, tyhjät ja avatut tynnyrit sekä sammuttimet "
   },
   {
     name: "vaaralliset jätteet",
@@ -77,15 +77,15 @@ function Home() {
     setInformation(item.information)
   }
 
-  const filteredItems = items.filter(item => item.name.toUpperCase().indexOf(filter.toUpperCase()) >= 0)
-  const renderList = filteredItems.map(item => <li className="link" style={item.underline ? {textDecorationLine: "underline"} : {}} onClick={() => handleResultChange(item)}>{item.name}</li>)
+  const filteredItems = items.filter(item => item.name.toUpperCase().substring(0, filter.length).indexOf(filter.toUpperCase()) >= 0)
+  const renderList = filteredItems.map(item => <li key={item.name} className="link" style={item.underline ? {textDecorationLine: "underline"} : {}} onClick={() => handleResultChange(item)}>{item.name}</li>)
 
   if (items.length === filteredItems.length) {
     return (
       <div className="App">
         <Navbar/>
         <h1>Kiertokapulan lajitteluhaku</h1>
-        <input value={filter} onChange={handleFilterAdd}/>
+        <input placeholder="etsi jätettä" value={filter} onChange={handleFilterAdd}/>
         <Template name={name} map={map} information={information} />
         <Footer/>
       </div>
@@ -97,7 +97,7 @@ function Home() {
       <div className="App">
         <Navbar/>
         <h1>Kiertokapulan lajitteluhaku</h1>
-        <input value={filter} onChange={handleFilterAdd}/>
+        <input placeholder="etsi jätettä" value={filter} onChange={handleFilterAdd}/>
         <p>Ei hakutuloksia</p>
         <Template name={name} map={map} information={information} />
         <Footer/>
@@ -109,7 +109,7 @@ function Home() {
     <div className="App">
       <Navbar/>
       <h1>Kiertokapulan lajitteluhaku</h1>
-      <input value={filter} onChange={handleFilterAdd}/>
+      <input placeholder="etsi jätettä" value={filter} onChange={handleFilterAdd}/>
       <div className="full">
       <ul>{renderList}</ul>
       <Template name={name} map={map} information={information} />

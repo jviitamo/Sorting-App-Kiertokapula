@@ -2,24 +2,24 @@ import React, { PureComponent } from 'react'
 
 const names = [
   {
-   name: "Puolmatka",
-   underline: true 
+    name: "Puolmatka",
+    underline: true 
   },
   {
-   name: "Metsä-Tuomela",
-   underline: false 
+    name: "Metsä-Tuomela",
+    underline: false 
   },
   {
-   name: "Karanoja",
-   underline: false 
+    name: "Karanoja",
+    underline: false 
   },
   {
-   name: "Kapula",
-   underline: false 
+    name: "Kapula",
+    underline: false 
   },
   {
-   name: "Lumikorpi",
-   underline: false 
+    name: "Lumikorpi",
+    underline: false 
   }
 ]
 
