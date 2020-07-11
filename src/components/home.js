@@ -80,7 +80,7 @@ function Home() {
   const filteredItems = items.filter(item => item.name.toUpperCase().indexOf(filter.toUpperCase()) >= 0)
   const renderList = filteredItems.map(item => <li className="link" style={item.underline ? {textDecorationLine: "underline"} : {}} onClick={() => handleResultChange(item)}>{item.name}</li>)
 
-  if (items.length === filteredItems.length) {
+  if (items.length === filteredItems.length | filteredItems.length === 0) {
     return (
       <div className="App">
         <Navbar/>
