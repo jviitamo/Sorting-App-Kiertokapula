@@ -60,7 +60,12 @@ const names = [
         })})  
       }
 
-      const renderMobileList = list.map(item => <p className="mobile" key={item.name} style={item.underline ? {textDecorationLine: "underline"} : {}} onClick={() => handleResultChange(item)}>{item.name}</p>)
+      const handleClick = (item) => {
+        handleResultChange(item)
+        this.setState({ open: !this.state.open })
+      }
+
+      const renderMobileList = list.map(item => <p className="mobile" key={item.name} style={item.underline ? {textDecorationLine: "underline"} : {}} onClick={() => handleClick(item)}>{item.name}</p>)
       const renderList = list.map(item => <s key={item.name} style={item.underline ? {textDecorationLine: "underline"} : {}} onClick={() => handleResultChange(item)}>{item.name}</s>)
       const chosen = list.filter(item => item.underline === true)
 
