@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import Menu from 'react-hamburger-menu'
 
 const names = [
   {
@@ -67,10 +68,15 @@ const names = [
         return (
           <div className={`header-mobile ${open ? 'visible' : 'hidden'}`}>
             <div>
-              <div className={'header-mobile-icon'} onClick={() => this.setState({ open: !this.state.open })}>
-                <div />
-                <div />
-                <div />
+              <div>
+               <Menu 
+               color="#005580"
+               strokeWidth={3}
+               width={27}
+               height={20}
+               isOpen={this.state.open}
+               menuClicked={() => this.setState({ open: !this.state.open })}
+               />
               </div>
               <div className="chosen" style={open ? {display: "none"} : {display: ""}}>{chosen[0].name}</div>
             </div>
