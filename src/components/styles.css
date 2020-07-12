@@ -218,7 +218,7 @@ footer {
   }
   
   .header-mobile.visible {
-    height: 350px;
+    height: 100%;
   }
   
   .header-mobile.hidden {
@@ -228,16 +228,20 @@ footer {
   .header-mobile > div {
     width: 100%;
     min-height: 50px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    font-size: 30px;
+    display: grid;
+    grid-template-columns: 20% 13% 40% 10% 20%;
     align-items: center;
     color: #005580;
   }
-  
-  .header-mobile > div:hover {
-    opacity: 0.8;
-    cursor: pointer;
+
+  .header-mobile > p {
+      font-size: 30px;
+  }
+
+  .chosen {
+      grid-column-start: 3;
+      font-size: 15px;
   }
   
   .header-mobile-icon {
@@ -260,4 +264,7 @@ footer {
     background-color: #005580;
   }
 
+  .mobile {
+      margin-top: 40px
+  }
   

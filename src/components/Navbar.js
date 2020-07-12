@@ -59,8 +59,9 @@ const names = [
         })})  
       }
 
-      const renderMobileList = list.map(item => <div key={item.name} style={item.underline ? {textDecorationLine: "underline"} : {}} onClick={() => handleResultChange(item)}>{item.name}</div>)
+      const renderMobileList = list.map(item => <p className="mobile" key={item.name} style={item.underline ? {textDecorationLine: "underline"} : {}} onClick={() => handleResultChange(item)}>{item.name}</p>)
       const renderList = list.map(item => <s key={item.name} style={item.underline ? {textDecorationLine: "underline"} : {}} onClick={() => handleResultChange(item)}>{item.name}</s>)
+      const chosen = list.filter(item => item.underline === true)
 
       if (width < 515) {
         return (
@@ -71,6 +72,7 @@ const names = [
                 <div />
                 <div />
               </div>
+              <div className="chosen" style={open ? {display: "none"} : {display: ""}}>{chosen[0].name}</div>
             </div>
             {renderMobileList}
           </div>
