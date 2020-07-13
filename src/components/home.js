@@ -56,10 +56,12 @@ const list = [
 function Home() {
 
   const [filter, setFilter] = useState('')
+  const [open, setOpen] = useState(false)
   const [map, setMap] = useState('')
   const [name, setName] = useState('')
   const [information, setInformation] = useState("")
   const [items, setItems] = useState(list)
+  const [down, setDown] = useState(true)
 
   const handleFilterAdd = (event) => {
     setFilter(event.target.value)
@@ -77,43 +79,43 @@ function Home() {
     setInformation(item.information)
   }
 
+  const HandleArrowClick = () => {
+    setOpen(!open)
+    setDown(!down)
+  }
+
   const filteredItems = items.filter(item => item.name.toUpperCase().substring(0, filter.length).indexOf(filter.toUpperCase()) >= 0)
   const renderList = filteredItems.map(item => <li key={item.name} className="link" style={item.underline ? {textDecorationLine: "underline"} : {}} onClick={() => handleResultChange(item)}>{item.name}</li>)
 
-  if (items.length === filteredItems.length) {
+  if (items.length === filteredItems.length | filteredItems.length === 0) {
     return (
       <div className="App">
         <Navbar/>
         <h1>Kiertokapulan lajitteluhaku</h1>
-        <input placeholder="etsi jätettä" value={filter} onChange={handleFilterAdd}/>
+        <div className="inputwrap">
+          <div style={filteredItems.length === 0 ? {display: "none"} : {display: ""}}>
+            <p className="arrow1" style={down ? {display: ""} : {display: "none"}} onClick={HandleArrowClick}><i className="arrow down"></i></p>
+            <p className="arrow2" style={!down ? {display: ""} : {display: "none"}} onClick={HandleArrowClick}><i className="arrow up"></i></p>
+          </div>
+          <input placeholder="etsi jätettä" value={filter} onChange={handleFilterAdd}/>
+        </div>
+        <ul style={open | filteredItems.length === 0 ? {display: ""} : {display: "none"}}>{renderList}</ul>
+        <p style={filteredItems.length === 0 ? {display: ""} : {display: "none"}}>Ei hakutuloksia</p>
         <Template name={name} map={map} information={information} />
         <Footer/>
       </div>
     );
   }
 
-  if ( filteredItems.length === 0) {
-    return (
-      <div className="App">
-        <Navbar/>
-        <h1>Kiertokapulan lajitteluhaku</h1>
-        <input placeholder="etsi jätettä" value={filter} onChange={handleFilterAdd}/>
-        <p>Ei hakutuloksia</p>
-        <Template name={name} map={map} information={information} />
-        <Footer/>
-      </div>
-    )
-  }
-
   return (
     <div className="App">
       <Navbar/>
       <h1>Kiertokapulan lajitteluhaku</h1>
-      <input placeholder="etsi jätettä" value={filter} onChange={handleFilterAdd}/>
-      <div className="full">
+      <div className="inputwrap">
+          <input placeholder="etsi jätettä" value={filter} onChange={handleFilterAdd}/>
+        </div>
       <ul>{renderList}</ul>
       <Template name={name} map={map} information={information} />
-      </div>
       <Footer/>
     </div>
   );
