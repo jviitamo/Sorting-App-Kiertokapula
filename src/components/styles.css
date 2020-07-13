@@ -18,7 +18,7 @@ ul {
     flex-direction: column;
     align-content: center;
     justify-content: center;
-    width: 30%;
+    width: 25%;
     margin-left: 35%;
     margin-bottom: 30px
 }
@@ -157,6 +157,55 @@ footer {
     transform: rotate(225deg);
  }
 
+ .header-mobile {
+    position: absolute;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: calc(100% - 2 * 20px);
+    padding: 0 20px;
+    background-color: white;
+    font-size: 14px;
+    font-family: "Montserrat";
+    transition: all 0.2s;
+    overflow: hidden;
+  }
+  
+  .header-mobile.visible {
+    height: 100%;
+  }
+  
+  .header-mobile.hidden {
+    height: 50px;
+  }
+  
+  .header-mobile > div {
+    width: 100%;
+    min-height: 50px;
+    font-size: 30px;
+    display: grid;
+    grid-template-columns: 20% 13% 40% 10% 20%;
+    align-items: center;
+    color: #005580;
+  }
+
+  .header-mobile > p {
+      font-size: 30px;
+  }
+
+  .chosen {
+      grid-column-start: 3;
+      font-size: 15px;
+  }
+
+  .mobile {
+      margin-top: 30px;
+  }
+  
+
 @media screen and (max-width: 800px) {
     .wrapper {
         flex-direction: column-reverse;
@@ -227,52 +276,3 @@ footer {
       font-size: 13px;
     }
   }
-  
-  .header-mobile {
-    position: absolute;
-    top: 0;
-    z-index: 100;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    width: calc(100% - 2 * 20px);
-    padding: 0 20px;
-    background-color: white;
-    font-size: 14px;
-    font-family: "Montserrat";
-    transition: all 0.2s;
-    overflow: hidden;
-  }
-  
-  .header-mobile.visible {
-    height: 100%;
-  }
-  
-  .header-mobile.hidden {
-    height: 50px;
-  }
-  
-  .header-mobile > div {
-    width: 100%;
-    min-height: 50px;
-    font-size: 30px;
-    display: grid;
-    grid-template-columns: 20% 13% 40% 10% 20%;
-    align-items: center;
-    color: #005580;
-  }
-
-  .header-mobile > p {
-      font-size: 30px;
-  }
-
-  .chosen {
-      grid-column-start: 3;
-      font-size: 15px;
-  }
-
-  .mobile {
-      margin-top: 30px;
-  }
-  

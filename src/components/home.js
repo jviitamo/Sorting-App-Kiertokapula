@@ -53,7 +53,7 @@ const list = [
   }
 ]
 
-function Home() {
+const Home = () =>  {
 
   const [filter, setFilter] = useState('')
   const [open, setOpen] = useState(false)
@@ -68,15 +68,26 @@ function Home() {
   }
 
   const handleResultChange = (item) => {
-    setItems(items.map(item1 => {
-      if (item1.name === item.name) {
-        item1.underline = true
-      } else item1.underline = false
-      return item1
-    }))
-    setMap(item.map)
-    setName(item.name)
-    setInformation(item.information)
+    if (item.underline === true) {
+      setItems(items.map(item => {
+        item.underline = false
+        return item
+      }))
+      setMap("")
+      setName("")
+      setInformation("")
+    }
+    else {
+      setItems(items.map(item1 => {
+        if (item1.name === item.name) {
+          item1.underline = true
+        } else item1.underline = false
+        return item1
+      }))
+      setMap(item.map)
+      setName(item.name)
+      setInformation(item.information)
+  }
   }
 
   const HandleArrowClick = () => {
