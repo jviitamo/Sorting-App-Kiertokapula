@@ -7,7 +7,7 @@ import Template from './template'
 import Footer from './footer'
 import Navbar from './Navbar'
 
-
+//list rendered to the page
 const list = [
   {
     name: 'sekajäte',
@@ -63,10 +63,13 @@ const Home = () =>  {
   const [items, setItems] = useState(list)
   const [down, setDown] = useState(true)
 
-  const handleFilterAdd = (event) => {
+
+
+  const handleFilterChange = (event) => {
     setFilter(event.target.value)
   }
 
+  //changes showed result based on the clicked item
   const handleResultChange = (item) => {
     if (item.underline === true) {
       setItems(items.map(item => {
@@ -90,25 +93,29 @@ const Home = () =>  {
   }
   }
 
+  //chnages the arrow direction on click
   const HandleArrowClick = () => {
     setOpen(!open)
     setDown(!down)
   }
 
+  //filters the items based on the filter-text
+  //maps the items to a list
   const filteredItems = items.filter(item => item.name.toUpperCase().substring(0, filter.length).indexOf(filter.toUpperCase()) >= 0)
   const renderList = filteredItems.map(item => <li key={item.name} className="link" style={item.underline ? {textDecorationLine: "underline"} : {}} onClick={() => handleResultChange(item)}>{item.name}</li>)
 
+  //does not show filtered items if there is no filter or filter gives no result
   if (items.length === filteredItems.length | filteredItems.length === 0) {
     return (
       <div className="App">
         <Navbar/>
         <h1>Kiertokapulan lajitteluhaku</h1>
-        <div className="inputwrap">
+        <div className="inputWrapper">
           <div style={filteredItems.length === 0 ? {display: "none"} : {display: ""}}>
             <p className="arrow1" style={down ? {display: ""} : {display: "none"}} onClick={HandleArrowClick}><i className="arrow down"></i></p>
             <p className="arrow2" style={!down ? {display: ""} : {display: "none"}} onClick={HandleArrowClick}><i className="arrow up"></i></p>
           </div>
-          <input placeholder="etsi jätettä" value={filter} onChange={handleFilterAdd}/>
+          <input placeholder="etsi jätettä" value={filter} onChange={handleFilterChange}/>
         </div>
         <ul style={open | filteredItems.length === 0 ? {display: ""} : {display: "none"}}>{renderList}</ul>
         <p style={filteredItems.length === 0 ? {display: ""} : {display: "none"}}>Ei hakutuloksia</p>
@@ -118,13 +125,14 @@ const Home = () =>  {
     );
   }
 
+  //else renders the possible options
   return (
     <div className="App">
       <Navbar/>
       <h1>Kiertokapulan lajitteluhaku</h1>
-      <div className="inputwrap">
-          <input placeholder="etsi jätettä" value={filter} onChange={handleFilterAdd}/>
-        </div>
+      <div className="inputWrapper">
+        <input placeholder="etsi jätettä" value={filter} onChange={handleFilterChange}/>
+      </div>
       <ul>{renderList}</ul>
       <Template name={name} map={map} information={information} />
       <Footer/>
