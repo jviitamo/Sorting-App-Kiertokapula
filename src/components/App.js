@@ -53,7 +53,7 @@ const list = [
   }
 ]
 
-const Home = () =>  {
+const App = () =>  {
 
   const [filter, setFilter] = useState('')
   const [open, setOpen] = useState(false)
@@ -85,18 +85,36 @@ const Home = () =>  {
       setName(item.name)
       setInformation(item.information)
   }
-  }
+  }  
 
-  //chnages the arrow direction on click
-  const HandleArrowClick = () => {
-    setOpen(!open)
-    setDown(!down)
-  }
-
-  //filters the items based on the filter-text
-  //maps the items to a list
   const filteredItems = items.filter(item => item.name.toUpperCase().substring(0, filter.length).indexOf(filter.toUpperCase()) >= 0)
-  const renderList = filteredItems.map(item => <li key={item.name} className="link" style={item.underline ? {textDecorationLine: "underline"} : {}} onClick={() => handleResultChange(item)}>{item.name}</li>)
+
+  const Arrows = () => {
+    //changes the arrow direction on click
+    const HandleArrowClick = () => {
+      setOpen(!open)
+      setDown(!down)
+    }
+
+    return (
+      <div style={filteredItems.length === 0 | filteredItems.length < items.length ? {display: "none"} : {display: ""}}>
+        <p className="arrow1" style={down ? {display: ""} : {display: "none"}} onClick={HandleArrowClick}><i className="arrow down"></i></p>
+        <p className="arrow2" style={!down ? {display: ""} : {display: "none"}} onClick={HandleArrowClick}><i className="arrow up"></i></p>
+      </div>
+    )
+  }
+
+
+  const List = () => {
+
+    //filters the items based on the filter-text
+    //maps the items to a list
+    const renderList = filteredItems.map(item => <li key={item.name} className="link" style={item.underline ? {textDecorationLine: "underline"} : {}} onClick={() => handleResultChange(item)}>{item.name}</li>)
+
+    return (
+      <ul style={open | filteredItems.length === 0 | filteredItems.length < items.length ? {display: ""} : {display: "none"}}>{renderList}</ul>
+    )
+  }
 
   //does not show filtered items if there is no filter or filter gives no result
     return (
@@ -104,13 +122,10 @@ const Home = () =>  {
         <Navbar/>
         <h1>Kiertokapulan lajitteluhaku</h1>
         <div className="inputWrapper">
-          <div style={filteredItems.length === 0 | filteredItems.length < items.length ? {display: "none"} : {display: ""}}>
-            <p className="arrow1" style={down ? {display: ""} : {display: "none"}} onClick={HandleArrowClick}><i className="arrow down"></i></p>
-            <p className="arrow2" style={!down ? {display: ""} : {display: "none"}} onClick={HandleArrowClick}><i className="arrow up"></i></p>
-          </div>
+          <Arrows />
           <input placeholder="etsi jätettä" value={filter} onChange={({ target }) => setFilter(target.value)}/>
         </div>
-        <ul style={open | filteredItems.length === 0 | filteredItems.length < items.length ? {display: ""} : {display: "none"}}>{renderList}</ul>
+        <List />
         <p style={filteredItems.length === 0 ? {display: ""} : {display: "none"}}>Ei hakutuloksia</p>
         <Template name={name} map={map} information={information} />
         <Footer/>
@@ -120,4 +135,4 @@ const Home = () =>  {
 
 
 
-export default Home
+export default App
