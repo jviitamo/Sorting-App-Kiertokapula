@@ -3,8 +3,8 @@
     "name": "Search App PWA",
     "icons": [
         {
-            "src": "/images/logo2.jpg",
-            "type": "image/jpg",
+            "src": "/images/logo.png",
+            "type": "image/png",
             "sizes": "1024x1024"
         }
     ],
