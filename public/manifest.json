@@ -1,11 +1,11 @@
 {
-    "short_name": "Search App",
-    "name": "Search App PWA",
+    "short_name": "lajitteluhaku",
+    "name": "Kiertokapulan lajitteluhaku",
     "icons": [
         {
             "src": "/images/logo.png",
             "type": "image/png",
-            "sizes": "1024x1024"
+            "sizes": "600x600"
         }
     ],
     "start_url": ".",
