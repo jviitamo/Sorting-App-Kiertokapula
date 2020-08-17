@@ -14,6 +14,7 @@ const Template = ( {name, map, information} ) => {
             large={map}
             hideZoom={true}
             hideDownload={true}
+            alt={name}
             />
           </div>
           <div className="information" style={name !== "" ? {display: ""} : {display: "none"}}>

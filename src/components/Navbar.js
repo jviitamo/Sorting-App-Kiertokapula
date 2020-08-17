@@ -72,7 +72,7 @@ const names = [
       const renderMobileList = list.map(item => <p className="mobile" key={item.name} style={item.underline ? {textDecorationLine: "underline"} : {}} onClick={() => handleClick(item)}>{item.name}</p>)
       const renderList = list.map(item => <s key={item.name} style={item.underline ? {textDecorationLine: "underline"} : {}} onClick={() => handleResultChange(item)}>{item.name}</s>)
 
-      //finds the choosed item from the menu
+      //finds the chosen item from the menu
       const chosenFromMenu = list.filter(item => item.underline === true)
 
       if (width < 515) {

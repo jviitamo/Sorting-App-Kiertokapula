@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import seka from './photos/1.png'
 import metalli from './photos/2.jpg'
 import puu from './photos/3.jpg'
+import vaaralliset from './photos/vaaralliset-min.jpg'
+import kattohuopa from './photos/kattohuopa-min.jpg'
+import elektroniikka from './photos/elektroniikka-min.jpg'
+import asbesti from './photos/asbesti-min.jpg'
 import './styles.css'
 import Template from './template'
 import Footer from './footer'
@@ -30,25 +34,25 @@ const list = [
   {
     name: "vaaralliset jätteet",
     underline: false,
-    map: metalli,
+    map: vaaralliset,
     information: "nämä ovat vaarallisia jätteitä"
   },
   {
     name: "kattohuopa",
     underline: false,
-    map: metalli,
+    map: kattohuopa,
     information: "nämä ovat vaarallisia jätteitä"
   },
   {
     name: "elektroniikka",
     underline: false,
-    map: metalli,
+    map: elektroniikka,
     information: "nämä ovat vaarallisia jätteitä"
   },
   {
     name: "asbesti",
     underline: false,
-    map: metalli,
+    map: asbesti,
     information: "nämä ovat vaarallisia jätteitä"
   }
 ]
@@ -84,7 +88,7 @@ const App = () =>  {
       setMap(item.map)
       setName(item.name)
       setInformation(item.information)
-  }
+    }
   }  
 
   const filteredItems = items.filter(item => item.name.toUpperCase().substring(0, filter.length).indexOf(filter.toUpperCase()) >= 0)
