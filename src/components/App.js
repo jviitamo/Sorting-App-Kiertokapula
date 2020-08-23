@@ -1,61 +1,9 @@
 import React, { useState } from 'react'; 
-import seka from './photos/1.png'
-import metalli from './photos/2.jpg'
-import puu from './photos/3.jpg'
-import vaaralliset from './photos/vaaralliset-min.jpg'
-import kattohuopa from './photos/kattohuopa-min.jpg'
-import elektroniikka from './photos/elektroniikka-min.jpg'
-import asbesti from './photos/asbesti-min.jpg'
 import './styles.css'
 import Template from './template'
 import Footer from './footer'
 import Navbar from './Navbar'
-
-//list rendered to the page
-const list = [
-  {
-    name: 'sekajäte',
-    underline: false,
-    map: seka,
-    information: "Sekajätettä kerätään kiinteistöiltä, joilla biojätettä ei tarvitse määräysten mukaan lajitella erikseen ja joilla sitä ei kompostoida. Tähän luokkaan kuuluvat kaikki muihin osiin kelpaamaton jäte. Esimerkiksi SER-romu, vaaralliset jätteet tai rakennusjätteet eivät kuulu tähän kategoriaan."
-  },
-  {
-    name: 'puu',
-    underline: false,
-    map: puu,
-    information: "Puu jaetaan kahteen osaan, puhtaaseen puuhun ja purkupuuhun. Puhdas puu saa sisältää vähäisiä määriä nauloja, ruuveja ja saranoita. Myös lahonnut puu kelpaa.Toisaalta purkupuu taas saa sisältää nauloja, ruuveja ja saranoita sekä muita mekaanisia epäpuhtauksia sekä puussa kiinni olevan tapetin. Myös lahonnut purkupuu kelpaa."
-  },
-  {
-    name: 'metalli',
-    underline: false,
-    map: metalli,
-    information: "metalli voidaan toimittaa alueelle ilmaiseksi. Metalliin kuuluvat muun muassa, polkupyörät, kaasugrillit, kattopelti, kiukaat, tyhjät ja avatut tynnyrit sekä sammuttimet "
-  },
-  {
-    name: "vaaralliset jätteet",
-    underline: false,
-    map: vaaralliset,
-    information: "nämä ovat vaarallisia jätteitä"
-  },
-  {
-    name: "kattohuopa",
-    underline: false,
-    map: kattohuopa,
-    information: "nämä ovat vaarallisia jätteitä"
-  },
-  {
-    name: "elektroniikka",
-    underline: false,
-    map: elektroniikka,
-    information: "nämä ovat vaarallisia jätteitä"
-  },
-  {
-    name: "asbesti",
-    underline: false,
-    map: asbesti,
-    information: "nämä ovat vaarallisia jätteitä"
-  }
-]
+import Lists from './Lists'
 
 const App = () =>  {
 
@@ -64,7 +12,7 @@ const App = () =>  {
   const [map, setMap] = useState('')
   const [name, setName] = useState('')
   const [information, setInformation] = useState("")
-  const [items, setItems] = useState(list)
+  const [items, setItems] = useState(Lists.Puolmatka)
   const [down, setDown] = useState(true)
 
   //changes showed result based on the clicked item
@@ -89,7 +37,25 @@ const App = () =>  {
       setName(item.name)
       setInformation(item.information)
     }
-  }  
+  }
+  
+  const handlePlaceChange = (item) => {
+    console.log(item)
+    if (item.name === "Puolmatka") {
+      setItems(Lists.Puolmatka)
+    } else if (item.name === "Kapula") {
+      setItems(Lists.Kapula)
+    } else if (item.name === "Karanoja") {
+      setItems(Lists.Karanoja) 
+    } else if (item.name === "Metsä-Tuomela") {
+      setItems(Lists.MetsäTuomela)
+    } else if (item.name === "Lumikorpi") {
+      setItems(Lists.Lumikorpi)
+    }
+    setMap("")
+    setName("")
+    setInformation("")
+  }
 
   const filteredItems = items.filter(item => item.name.toUpperCase().substring(0, filter.length).indexOf(filter.toUpperCase()) >= 0)
 
@@ -108,7 +74,6 @@ const App = () =>  {
     )
   }
 
-
   const List = () => {
 
     //filters the items based on the filter-text
@@ -123,7 +88,7 @@ const App = () =>  {
   //does not show filtered items if there is no filter or filter gives no result
     return (
       <div className="App">
-        <Navbar/>
+        <Navbar handlePlaceChange={handlePlaceChange} />
         <h1>Kiertokapulan lajitteluhaku</h1>
         <div className="inputWrapper">
           <Arrows />

@@ -56,6 +56,7 @@ const names = [
       const handleClick = (item) => {
         handleResultChange(item)
         this.setState({ open: !this.state.open })
+        this.props.handlePlaceChange(item)
       }
       
       //changes the underlining when different menu text is pressed
