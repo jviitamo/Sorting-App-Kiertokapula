@@ -60,6 +60,7 @@ const names = [
       }
       
       //changes the underlining when different menu text is pressed
+      //changes the texts and photos in items according to ´pressed item
       const handleResultChange = (item) => {
         this.setState({list: list.map(item1 => {
           if (item1.name === item.name) {
@@ -71,7 +72,7 @@ const names = [
 
       //different styling for mobile and normal menu text
       const renderMobileList = list.map(item => <p className="mobile" key={item.name} style={item.underline ? {textDecorationLine: "underline"} : {}} onClick={() => handleClick(item)}>{item.name}</p>)
-      const renderList = list.map(item => <s key={item.name} style={item.underline ? {textDecorationLine: "underline"} : {}} onClick={() => handleResultChange(item)}>{item.name}</s>)
+      const renderList = list.map(item => <s key={item.name} style={item.underline ? {textDecorationLine: "underline"} : {}} onClick={() => handleClick(item)}>{item.name}</s>)
 
       //finds the chosen item from the menu
       const chosenFromMenu = list.filter(item => item.underline === true)

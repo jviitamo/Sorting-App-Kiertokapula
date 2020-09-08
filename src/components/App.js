@@ -40,7 +40,6 @@ const App = () =>  {
   }
   
   const handlePlaceChange = (item) => {
-    console.log(item)
     if (item.name === "Puolmatka") {
       setItems(Lists.Puolmatka)
     } else if (item.name === "Kapula") {
@@ -48,13 +47,14 @@ const App = () =>  {
     } else if (item.name === "Karanoja") {
       setItems(Lists.Karanoja) 
     } else if (item.name === "Metsä-Tuomela") {
-      setItems(Lists.MetsäTuomela)
+      setItems(Lists.MetsaTuomela)
     } else if (item.name === "Lumikorpi") {
       setItems(Lists.Lumikorpi)
     }
     setMap("")
     setName("")
     setInformation("")
+    setOpen(false)
   }
 
   const filteredItems = items.filter(item => item.name.toUpperCase().substring(0, filter.length).indexOf(filter.toUpperCase()) >= 0)

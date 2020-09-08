@@ -51,7 +51,7 @@ const Puolmatka = [
     }
   ]
   
-  const MetsäTuomela = [
+  const MetsaTuomela = [
     {
       name: 'sekajäte Metsä-Tuomela',
       underline: false,
@@ -231,4 +231,4 @@ const Puolmatka = [
     }
   ]
 
-  export default { Puolmatka, Kapula, MetsäTuomela, Karanoja, Lumikorpi }
+  export default { Puolmatka, Kapula, MetsaTuomela, Karanoja, Lumikorpi }
